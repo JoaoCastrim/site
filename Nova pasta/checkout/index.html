@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <script src="js/script.js" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f9f9f9;
+      padding: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .form-group input {
+      flex: 1 1 48%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .payment-methods {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .payment-methods button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+    .payment-methods .active {
+      border: 2px solid #00B37E;
+      background: #E6FFFA;
+    }
+    .info {
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0;
+    }
+    .highlight {
+      font-weight: 600;
+      color: #1a73e8;
+      cursor: pointer;
+    }
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .purchase-summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .purchase-summary img {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+    }
+    .purchase-info {
+      flex: 1;
+    }
+    .btn {
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h3> Identificação</h3>
+    <div class="form-group">
+      <input type="text" placeholder="Seu nome completo" id="nome">
+      <input type="email" placeholder="Seu e-mail" id="email" >
+      <input type="text" placeholder="Seu telefone" id="telefone" oninput="this.value=this.value.replace(/[^0-9]/g, '')" />
+      <input type="text" placeholder="Digite seu CPF/CNPJ" id="cpf" oninput="this.value=this.value.replace(/[^0-9]/g, '')"/>
+      </div>
+  </div>
+
+  <div class="card">
+    <h3> Pagamento</h3>
+    <div class="payment-methods">
+      <button>Cartão</button>
+      <button class="active">PIX</button>
+      <button>Boleto</button>
+    </div>
+    <p class="info">
+       Informações sobre o pagamento via PIX<br>
+      O pagamento é instantâneo e liberação imediata.<br>
+      Ao clicar em <span class="highlight">“Comprar agora”</span> você será encaminhado para um ambiente seguro, onde encontrará o passo a passo para realizar o pagamento.
+    </p>
+    <p class="total">
+       Valor à vista: <strong>R$ 29,99</strong>
+    </p>
+  </div>
+
+  <div class="card">
+    <h3> Sua Compra</h3>
+    <div class="purchase-summary">
+      <img src="img1.webp" alt="Produto">
+      <div class="purchase-info">
+        <p>Fone de ouvido KZ ZSN PRO</p>
+        <p><strong>R$ 29,99</strong></p>
+      </div>
+    </div>
+    <button class="btn" onclick="comprarAgora()" id="send" >Comprar agora</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
