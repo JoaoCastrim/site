@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="icone.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AcaiDelli</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      padding: 16px;
+    }
+
+    .card {
+      background: rgb(255, 255, 255);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      margin-top: -8px;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .form-group input {
+      flex: 1 1 48%;
+      padding: 10px;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+    }
+    
+    .payment-methods {
+      display: flex;
+      gap: 10px;
+      margin: 10px 0;
+    }
+    .payment-methods button {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ffffff;
+      border-radius: 6px;
+      background: #f0f0f0;
+      cursor: pointer;
+    }
+    .payment-methods .active {
+      border: 2px solid #ffffff;
+      background: #E6FFFA;
+    }
+    .info {
+      font-size: 14px;
+      color: #555;
+      margin: 10px 0;
+    }
+    .highlight {
+      font-weight: 600;
+      color: #ffffff;
+      cursor: pointer;
+    }
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .purchase-summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .purchase-summary img {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+    }
+    .purchase-info {
+      flex: 1;
+    }
+
+    .card h2 {
+      margin-top: 0px;
+      margin-block: 8px;
+      font-size: 18px;
+      margin-top: -10px;
+    }
+
+    .input-group {
+      margin-bottom: 16px;
+    }
+
+    .input-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: #000000;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .input-group input.invalid {
+      border-color: #e57373;
+      background-color: #fdeaea;
+    }
+
+button {
+      margin-top: 10px;
+      width: 100%;
+      padding: 15px;
+      font-size: 16px;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <h2>Dados de entrega</h2>
+    <form id="cadastroForm" method="POST" action="salvar.php">
+      <div class="input-group">
+         <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
+      </div>
+
+      <div class="input-group">
+        <input type="Endereço" id="Endereço" name="Endereço" placeholder="Seu Endereço" required>
+      </div>
+
+      <div class="input-group">
+        <input type="email" id="email" name="email" placeholder="Seu e-mail" required>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="cpf" name="cpf" placeholder="Digite seu CPF" maxlength="11" required oninput="this.value=this.value.replace(/[^0-9]/g, '')">
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="telefone" name="telefone" placeholder="Apenas números" maxlength="11" required oninput="this.value=this.value.replace(/[^0-9]/g, '')">
+      </div>
+
+      <div class="card">
+        <h3>💳 Pagamento</h3>
+        <div class="payment-methods">
+          <button>Cartão</button>
+          <button>PIX</button>
+          <button>Boleto</button>
+        </div>
+        <p class="info">
+          ℹ️ Informações sobre o pagamento via PIX<br>
+          O pagamento é instantâneo e liberação imediata.<br>
+          Ao clicar em <span class="highlight">“Comprar agora”</span> você será encaminhado para um ambiente seguro, onde encontrará o passo a passo para realizar o pagamento.
+        </p>
+        <p class="total">
+          💵 Valor à vista: <strong>R$ 29,99</strong>
+        </p>
+      </div>
+    
+      <div class="card">
+        <h3>📋 Sua Compra               (Unidades: 2)</h3>
+        <div class="purchase-summary">
+          <img src="img1.png" alt="Produto">
+          <div class="purchase-info">   
+            <p>Copo açai 500ml</p>
+            <p><strong>R$ 29,99</strong></p>
+          </div>
+        </div>
+
+
+      <button type="submit">Pagar</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById('cadastroForm').addEventListener('submit', function (e) {
+      const inputs = document.querySelectorAll('input');
+      let valid = true;
+
+      inputs.forEach(input => {
+        input.classList.remove('invalid');
+
+        if (!input.value.trim()) {
+          input.classList.add('invalid');
+          valid = false;
+        }
+
+        if ((input.id === 'telefone' || input.id === 'cpf') && /\D/.test(input.value)) {
+          input.classList.add('invalid');
+          valid = false;
+        }
+
+        if (input.id === 'email' && !/\S+@\S+\.\S+/.test(input.value)) {
+          input.classList.add('invalid');
+          valid = false;
+        }
+      });
+
+      if (!valid) {
+        e.preventDefault();
+        alert('Por favor, preencha todos os campos corretamente.');
+      }
+    });
+  </script>
+</body>
+</html>
