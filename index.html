@@ -176,8 +176,13 @@ button {
       <button type="submit">Pagar</button>
     </form>
   </main>
-
+  
+<script src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+data-preference-id="1144184193-e62e4ddf-db7f-435c-afc4-08bbb6b75a1e" data-source="button">
+</script>
+  
   <script>
+    
     document.getElementById('cadastroForm').addEventListener('submit', function (e) {
       const inputs = document.querySelectorAll('input');
       let valid = true;
