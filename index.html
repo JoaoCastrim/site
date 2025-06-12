@@ -138,13 +138,29 @@ button {
     button:hover {
       background-color: #000;
     }
+
+    .botao-comprar {
+  display: block;
+  text-align: center;
+  background-color: #000;
+  color: white;
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.botao-comprar:hover {
+  background-color: #222;
+}
+
   </style>
 </head>
 
 <body>
   <main class="card">
     <h2>Dados de entrega</h2>
-    <form id="cadastroForm" method="POST" action="https://link.conta.skalepay.com.br/acaidelli">
+    <form id="cadastroForm" method="POST" action="aaaaaaaaa">
       <div class="input-group">
          <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required>
       </div>
@@ -173,12 +189,9 @@ button {
             <p><strong>R$ 29,99</strong></p>
           </div>
         </div>
+        <a href="https://link.conta.skalepay.com.br/acaidelli" class="botao-comprar">Comprar</a>
     </form>
   </main>
-
-  <script src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
-data-preference-id="1144184193-e62e4ddf-db7f-435c-afc4-08bbb6b75a1e" data-source="button">
-</script>
 
   <script>
     
